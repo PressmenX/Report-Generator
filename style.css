@@ -1,0 +1,406 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --size-generator-panel: 20px;
+  --curved-btn: 16px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+input,
+select {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+div#generatorPanel {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 183, 255, 1) 0%,
+    rgba(56, 204, 123, 1) 100%
+  );
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  box-shadow: 0 5px 3em 3em rgba(56, 204, 123, 1);
+  margin-bottom: 6em;
+}
+
+div#generatorPanel p {
+  font-size: 1.1em;
+  color: white;
+  width: 80%;
+}
+
+div#generatorPanel .title {
+  background-color: white;
+  padding: 1em;
+  border-radius: 0 0 2em 2em;
+}
+
+div#generatorPanel h1 {
+  font-weight: 1000;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 183, 255, 1) 0%,
+    rgba(56, 204, 123, 1) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+form {
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  height: 75%;
+  display: grid;
+  gap: 2em;
+  grid-template-areas:
+    "biodata rapor"
+    "submit submit";
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 0.4fr;
+  padding: 2em;
+}
+
+form section {
+  border-radius: var(--curved-btn);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+#instruction {
+  max-width: 60%;
+  font-size: 0.9em;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+#biodata-div {
+  position: relative;
+  font-size: var(--size-generator-panel);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
+  align-items: center;
+  padding: 1em;
+  grid-area: biodata;
+}
+
+#biodata-div label {
+  color: white;
+  margin-left: 8px;
+}
+
+#biodata-div div,
+select {
+  display: flex;
+  flex-direction: column;
+  height: 3em;
+  width: clamp(150px, 90%, 350px);
+}
+
+#biodata-div * {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+#biodata-div input,
+#biodata-div select {
+  border: none;
+  outline: none;
+  border-radius: var(--curved-btn);
+  padding: 5px 0.5em;
+  width: 100%;
+}
+
+select {
+  max-height: 2em;
+}
+
+#biodata-div div * {
+  text-align: left;
+}
+
+#input-nilai {
+  font-size: var(--size-generator-panel);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  padding: 2em;
+  grid-area: rapor;
+}
+
+#input-nilai div {
+  background: white;
+  border-radius: var(--curved-btn);
+  min-width: 200px;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#input-nilai input {
+  font-size: 1em;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  max-width: 50px;
+  height: 70%;
+  padding: 5px;
+  text-align: center;
+}
+
+.mapel p {
+  text-align: left;
+  font-weight: bold;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 183, 255, 1) 0%,
+    rgba(56, 204, 123, 1) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#generateBtn {
+  position: relative;
+  border: none;
+  box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.2);
+  background: #1cdeb1;
+  max-height: 2.5em;
+  width: 30%;
+  max-width: 250px;
+  border-radius: 25px;
+  font-size: calc(var(--size-generator-panel) + 10px);
+  font-weight: bold;
+  color: white;
+  grid-area: submit;
+  justify-self: center;
+  overflow: hidden;
+}
+
+#generateBtn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #00000021;
+  transition: all 0.3s ease-in-out;
+}
+
+#generateBtn:hover::after {
+  width: 100%;
+}
+
+#generateBtn:active {
+  animation: zoom-in 0.1s ease;
+}
+
+#raporCtn {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 8px;
+}
+
+.rapor-item {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: white;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.rapor-item h2,
+.rapor-item h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.rapor-item h2 {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.rapor-item h3 {
+  margin-top: 1em;
+  width: 100%;
+}
+
+.rapor-item p {
+  margin: 5px 20%;
+  font-weight: bold;
+  line-height: 1.8;
+}
+
+.rapor-item p.status {
+  margin: 0;
+  align-self: center;
+}
+
+table {
+  width: 100%;
+  margin: 1em 0;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 0.5em;
+}
+
+/* -- TABLE NILAI -- */
+.tableNilai tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.tableNilai tr td:nth-child(odd) {
+  text-align: left;
+}
+
+.tableNilai tr td:nth-child(even) {
+  text-align: center;
+}
+
+/* -- STATUS LULUS/TIDAK LULUS -- */
+.status span {
+  display: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+span.isPassed {
+  display: block;
+  color: #2ecc71;
+}
+
+span.isFailed {
+  display: block;
+  color: red;
+}
+
+/* INDICATOR & STAT */
+#indicator {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 15px;
+  gap: 1.5em;
+}
+
+#indicator > * {
+  background-color: white;
+  padding: 1em;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.05);
+  min-width: 200px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.05em;
+  font-weight: bold;
+}
+
+#total-stat {
+  border-left: 6px solid rgb(4, 65, 249);
+}
+
+#total-passed-stat {
+  border-left: 6px solid #2ecc71;
+}
+
+#total-failed-stat {
+  border-left: 6px solid red;
+}
+
+#clearBtn-ctn {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+#clearBtn-ctn button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+#clearData {
+  border: 2px solid #ef5350;
+  color: #ef5350;
+}
+
+#exportJSON {
+  border: 2px solid #50dcef;
+  color: #50dcef;
+}
+
+#clearData:hover {
+  transform: scale(1.05);
+  color: white;
+  background-color: #ef5350;
+}
+
+#exportJSON:hover {
+  transform: scale(1.05);
+  color: white;
+  background-color: #50dcef;
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* -- MEDIA PRINT -- */
+@media print {
+  #generatorPanel,
+  #indicator,
+  #clearData,
+  #autoFillBtn {
+    display: none !important;
+  }
+
+  .rapor-item {
+    margin: 0;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    page-break-after: always;
+  }
+}
