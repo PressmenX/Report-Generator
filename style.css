@@ -198,7 +198,6 @@ select {
   color: white;
   grid-area: submit;
   justify-self: center;
-  overflow: hidden;
 }
 
 #generateBtn::after {
@@ -404,3 +403,4 @@ span.isFailed {
     page-break-after: always;
   }
 }
+
